@@ -18,7 +18,7 @@
 // === config
 // TODO: make a config file
 
-#define LOMO_TTY "/dev/ttyUSB2"
+#define LOMO_TTY "/dev/ttyUSB0"
 #define HANTEK_TMC "/dev/usbtmc1"
 #define ADC_PASS 2
 #define ADC_AVERAGE 2
