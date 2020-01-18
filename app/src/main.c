@@ -23,10 +23,10 @@
 #define ADC_PASS 2
 #define ADC_AVERAGE 2
 
-#define AMP (2.0)
-#define FREQ_STEP1 (10)
-#define FREQ_STOP1 (1200)
-#define FREQ_STEP2 (50)
+#define AMP (1.200)
+#define FREQ_STEP1 (5)
+#define FREQ_STOP1 (1500)
+#define FREQ_STEP2 (25)
 #define FREQ_STOP2 (5000)
 
 // === threads
@@ -231,7 +231,10 @@ void *worker(void *arg)
 	hantek_write(han_fd, "dds:type sine");
 	hantek_write(han_fd, "dds:offset 0");
 	hantek_write(han_fd, "dds:freq 10");
-	hantek_write(han_fd, "dds:amp 4.0");
+//	hantek_write(han_fd, "dds:amp 4.0");
+	memset(buf, 0, 100);
+	snprintf(buf, 100, "dds:amp %.3lf", 2*AMP);
+	hantek_write(han_fd, buf);
 	hantek_write(han_fd, "dds:switch 1");
 
 // fprintf(stderr, "2\n");
@@ -479,7 +482,7 @@ void *worker(void *arg)
 
 	hantek_write(han_fd, "dds:switch 0");
 	hantek_write(han_fd, "dds:offset 0");
-	hantek_write(han_fd, "dds:amp 0.01");
+//	hantek_write(han_fd, "dds:amp 0.01");
 
 // fprintf(stderr, "8\n");
 
